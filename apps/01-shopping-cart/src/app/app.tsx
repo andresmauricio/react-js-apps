@@ -1,8 +1,13 @@
 import styles from './app.module.css';
+import { Navbar } from './components/Navbar';
+import ProductList from './components/ProductList';
 
 export function App() {
   return (
-    <h1>Test</h1>
+    <>
+      <Navbar count={1} />
+      <ProductList></ProductList>
+    </>
 
   );
 }
