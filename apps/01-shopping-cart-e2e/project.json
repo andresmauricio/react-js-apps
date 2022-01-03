@@ -1,0 +1,28 @@
+{
+  "root": "apps/01-shopping-cart-e2e",
+  "sourceRoot": "apps/01-shopping-cart-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/01-shopping-cart-e2e/cypress.json",
+        "devServerTarget": "01-shopping-cart:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "01-shopping-cart:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/01-shopping-cart-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["01-shopping-cart"]
+}
