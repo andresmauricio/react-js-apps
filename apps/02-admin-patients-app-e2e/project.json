@@ -1,0 +1,28 @@
+{
+  "root": "apps/02-admin-patients-app-e2e",
+  "sourceRoot": "apps/02-admin-patients-app-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/02-admin-patients-app-e2e/cypress.json",
+        "devServerTarget": "02-admin-patients-app:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "02-admin-patients-app:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/02-admin-patients-app-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["02-admin-patients-app"]
+}
