@@ -1,0 +1,73 @@
+{
+  "root": "apps/03-budget-control",
+  "sourceRoot": "apps/03-budget-control/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/03-budget-control",
+        "index": "apps/03-budget-control/src/index.html",
+        "baseHref": "/",
+        "main": "apps/03-budget-control/src/main.tsx",
+        "polyfills": "apps/03-budget-control/src/polyfills.ts",
+        "tsConfig": "apps/03-budget-control/tsconfig.app.json",
+        "assets": [
+          "apps/03-budget-control/src/favicon.ico",
+          "apps/03-budget-control/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/03-budget-control/src/environments/environment.ts",
+              "with": "apps/03-budget-control/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "03-budget-control:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "03-budget-control:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/03-budget-control/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/03-budget-control"],
+      "options": {
+        "jestConfig": "apps/03-budget-control/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
