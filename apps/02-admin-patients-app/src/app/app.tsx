@@ -1,16 +1,21 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import NxWelcome from './nx-welcome';
+import Form from './components/Form';
 
 const StyledApp = styled.div`
   // Your style here
 `;
 
 export function App() {
-  return (
-    <StyledApp>
-      <NxWelcome title="02-admin-patients-app" />
-    </StyledApp>
-  );
+  const [appointment, setAppointment] = useState([
+    {
+      owner: 'Joe Doe',
+      pet: 'Doggy',
+      date: new Date(),
+      information: 'Lorem ipsum dolor sit amet, consectetur adip',
+    },
+  ]);
+  return <Form setAppointment={setAppointment} appointment={appointment} />;
 }
 
 export default App;
