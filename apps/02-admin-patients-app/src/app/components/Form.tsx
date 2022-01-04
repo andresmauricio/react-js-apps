@@ -10,7 +10,7 @@ const FormContainer = styled.form`
 `;
 
 const Input = styled.input`
-  width: 60%;
+  width: 100%;
   height: 35px;
   padding-left: 15px;
   border: none;
@@ -28,7 +28,7 @@ const Input = styled.input`
 `;
 
 const TextArea = styled.textarea`
-  width: 60%;
+  width: 100%;
   height: 35px;
   padding-left: 15px;
   border: none;
@@ -41,7 +41,7 @@ const TextArea = styled.textarea`
 `;
 
 const Button = styled.button`
-  width: 60%;
+  width: 100%;
   height: 30px;
   cursor: pointer;
   border: none;
@@ -77,6 +77,7 @@ function Form({
 
   return (
     <FormContainer onSubmit={onSubmit}>
+      <h2>Create Appointment</h2>
       <Input
         type="text"
         placeholder="Name Owner"

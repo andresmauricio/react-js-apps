@@ -12,6 +12,7 @@ const Main = styled.main`
 
 const Section = styled.section`
   display: flex;
+  justify-content: space-evenly;
 `;
 
 export function App() {
@@ -20,8 +21,8 @@ export function App() {
     <Main>
       <GlobalStyle />
       <Section>
-      <Form setAppointment={setAppointment} appointment={appointment} />
-      <ListAppoinments appointment={appointment} />
+        <Form setAppointment={setAppointment} appointment={appointment} />
+        <ListAppoinments appointment={appointment} />
       </Section>
     </Main>
   );

@@ -29,6 +29,7 @@ const Button = styled.button`
 function ListAppoinments({ appointment }: { appointment: any }) {
   return (
     <Wrap>
+      <h2>List of Appointments</h2>
       {appointment.map((appointments: any) => (
         <Card>
           <h2>{appointments.owner}</h2>
