@@ -22,7 +22,7 @@ export function App() {
       <GlobalStyle />
       <Section>
         <Form setAppointment={setAppointment} appointment={appointment} />
-        <ListAppoinments appointment={appointment} />
+        <ListAppoinments appointment={appointment} setAppointment={setAppointment} />
       </Section>
     </Main>
   );

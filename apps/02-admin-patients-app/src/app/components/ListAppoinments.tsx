@@ -8,7 +8,7 @@ const Wrap = styled.div`
 `;
 
 const Card = styled.section`
-  background-color:#645c64;
+  background-color: #645c64;
   border-radius: 5px;
   padding: 10px 20px;
   min-width: 300px;
@@ -26,18 +26,30 @@ const Button = styled.button`
   font-weight: bold;
 `;
 
-function ListAppoinments({ appointment }: { appointment: any }) {
+function ListAppoinments({
+  appointment,
+  setAppointment,
+}: {
+  appointment: any[];
+  setAppointment: any;
+}) {
+  const deleteAppointments = (id: number) => {
+    const newAppointments = [...appointment];
+    newAppointments.splice(id, 1);
+    setAppointment(newAppointments);
+  };
   return (
     <Wrap>
       <h2>List of Appointments</h2>
-      {appointment.map((appointments: any) => (
-        <Card>
-          <h2>{appointments.owner}</h2>
+      {appointment.length > 0 ? appointment.map((appointments: any, index: number) => (
+        <Card key={index}>
+          <h2>{index} - {appointments.owner}</h2>
           <p>{appointments.pet}</p>
           <p>{appointments.date}</p>
-          <Button>delete</Button>
+          <Button onClick={() => deleteAppointments(index)}>delete</Button>
         </Card>
-      ))}
+      )) : <h1>No Appointments</h1>}
+      {}
     </Wrap>
   );
 }
