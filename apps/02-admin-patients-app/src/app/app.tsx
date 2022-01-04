@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Form from './components/Form';
 import GlobalStyle from './components/GlobalsStyles';
@@ -15,14 +15,31 @@ const Section = styled.section`
   justify-content: space-evenly;
 `;
 
+const getAppointmentStore = () => {
+  const appointment = JSON.parse(
+    window.localStorage.getItem('appointments') || '[]'
+  );
+  return appointment || [];
+};
+
 export function App() {
   const [appointment, setAppointment] = useState([]);
+  useEffect(() => {
+    if (appointment.length === 0) {
+      setAppointment(getAppointmentStore());
+      console.log('get ap localStorage');
+    }
+    console.log('run');
+  }, []);
   return (
     <Main>
       <GlobalStyle />
       <Section>
         <Form setAppointment={setAppointment} appointment={appointment} />
-        <ListAppoinments appointment={appointment} setAppointment={setAppointment} />
+        <ListAppoinments
+          appointment={appointment}
+          setAppointment={setAppointment}
+        />
       </Section>
     </Main>
   );

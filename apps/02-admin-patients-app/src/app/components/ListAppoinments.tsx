@@ -36,6 +36,10 @@ function ListAppoinments({
   const deleteAppointments = (id: number) => {
     const newAppointments = [...appointment];
     newAppointments.splice(id, 1);
+    window.localStorage.setItem(
+      'appointments',
+      JSON.stringify(newAppointments)
+    );
     setAppointment(newAppointments);
   };
   return (

@@ -72,6 +72,10 @@ function Form({
 
   const onSubmit = (event: any) => {
     event.preventDefault();
+    window.localStorage.setItem(
+      'appointments',
+      JSON.stringify([...appointment, form])
+    );
     setAppointment([...appointment, form]);
   };
 
