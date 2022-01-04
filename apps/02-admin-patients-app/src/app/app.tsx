@@ -9,13 +9,19 @@ const Main = styled.main`
   height: 100vh;
 `;
 
+const Section = styled.section`
+  display: flex;
+`;
+
 export function App() {
   const [appointment, setAppointment] = useState([]);
   return (
     <Main>
       <GlobalStyle />
+      <Section>
       <Form setAppointment={setAppointment} appointment={appointment} />
       <ListAppoinments appointment={appointment} />
+      </Section>
     </Main>
   );
 }
