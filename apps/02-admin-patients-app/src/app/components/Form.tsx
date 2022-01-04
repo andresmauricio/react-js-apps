@@ -1,4 +1,55 @@
 import { useState } from 'react';
+import styled from 'styled-components';
+
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* align-items: center; */
+  /* justify-content: center; */
+`;
+
+const Input = styled.input`
+  width: 60%;
+  height: 35px;
+  padding-left: 15px;
+  border: none;
+  outline: none;
+  border: 1px solid #645c64;
+  border-radius: 5px;
+  background-color: #645c64;
+  color: #999999;
+  font-weight: bold;
+
+  ::placeholder {
+    color: #999999;
+    font-weight: bold;
+  }
+`;
+
+const TextArea = styled.textarea`
+  width: 60%;
+  height: 35px;
+  padding-left: 15px;
+  border: none;
+  outline: none;
+  border: 1px solid #645c64;
+  border-radius: 5px;
+  background-color: #645c64;
+  color: #999999;
+  font-weight: bold;
+`;
+
+const Button = styled.button`
+  width: 60%;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #35b5ad;
+  color: #ffffff;
+  font-weight: bold;
+`;
 
 function Form({
   setAppointment,
@@ -21,42 +72,42 @@ function Form({
 
   const onSubmit = (event: any) => {
     event.preventDefault();
-    setAppointment([...appointment, form]); 
+    setAppointment([...appointment, form]);
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input
+    <FormContainer onSubmit={onSubmit}>
+      <Input
         type="text"
         placeholder="Name Owner"
         name="owner"
         onChange={updateForm}
         required
       />
-      <input
+      <Input
         type="text"
         placeholder="Name Pet"
         name="pet"
         onChange={updateForm}
         required
       />
-      <input
+      <Input
         type="date"
         placeholder="Date"
         name="date"
         onChange={updateForm}
         required
       />
-      <textarea
+      <TextArea
         name="information"
         id=""
         cols={20}
         rows={5}
         onChange={updateForm}
         required
-      ></textarea>
-      <button type="submit">Send</button>
-    </form>
+      ></TextArea>
+      <Button type="submit">Send</Button>
+    </FormContainer>
   );
 }
 
