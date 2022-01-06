@@ -1,6 +1,6 @@
 import GlobalStyle from 'apps/03-budget-control/src/app/components/GlobalStyles';
 import styled from 'styled-components';
-import Input from './components/Input';
+import Budget from './components/Budget';
 
 const Card = styled.div`
   background-color: #efefef;
@@ -26,10 +26,7 @@ export function App() {
     <Main>
       <GlobalStyle />
       <Card>
-        <h2>Set your budget</h2>
-        <input type="number" placeholder="Into your budget initial" />
-        <Input />
-        <button>Set Budget</button>
+        <Budget />
       </Card>
     </Main>
   );
