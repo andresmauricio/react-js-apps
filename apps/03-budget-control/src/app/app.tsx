@@ -30,14 +30,20 @@ const Row = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const Col = styled.div``;
+const TotalExpense = styled.span`
+  color: ${(props: any) =>
+    props.expense > props.budget / 2 ? '#FF0000' : '#008000'};
+  font-weight: bold;
+` as any;
 
 export function App() {
   const [budget, setBudget] = useState(0);
   const [expenses, setExpenses] = useState<any[]>([]);
+  const [totalExpenses, setTotalExpenses] = useState(0);
 
   const addExpenses = (expense: { name: string; value: number }) => {
     setExpenses([...expenses, expense]);
+    setTotalExpenses(totalExpenses + expense.value);
   };
 
   return (
@@ -48,6 +54,12 @@ export function App() {
           <Row>
             <AddExpenses addExpenses={addExpenses} />
             <ControlExpenses expenses={expenses} budget={budget} />
+            <p>
+              Total expenses{' '}
+              <TotalExpense expense={totalExpenses} budget={budget}>
+                ${totalExpenses}
+              </TotalExpense>
+            </p>
           </Row>
         ) : (
           <Budget setBudget={setBudget} />
