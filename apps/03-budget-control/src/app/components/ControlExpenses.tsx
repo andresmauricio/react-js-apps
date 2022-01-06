@@ -7,6 +7,20 @@ const Col = styled.div`
   gap: 15px;
 `;
 
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Expense = styled.span`
+  background-color: #2c2b3f;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px 8px;
+`;
+
 function ControlExpenses({
   expenses,
   budget,
@@ -18,9 +32,10 @@ function ControlExpenses({
     <Col>
       <h4>Control Budget - Initial Budget ${budget}</h4>
       {expenses.map((expense: any) => (
-        <li>
-          Name: {expense.name} - Price {expense.value}
-        </li>
+        <Wrap>
+          <span>{expense.name}</span>
+          <Expense>${expense.value}</Expense>
+        </Wrap>
       ))}
     </Col>
   );
