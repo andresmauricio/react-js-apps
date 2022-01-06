@@ -5,6 +5,9 @@ const Col = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-height:300px;
+  overflow: hidden;
+  overflow-y: scroll;
 `;
 
 const Wrap = styled.div`
