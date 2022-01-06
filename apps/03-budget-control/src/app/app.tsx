@@ -1,7 +1,10 @@
 import GlobalStyle from 'apps/03-budget-control/src/app/components/GlobalStyles';
 import { useState } from 'react';
 import styled from 'styled-components';
+import AddExpenses from './components/AddExpenses';
 import Budget from './components/Budget';
+import Button from './components/Button';
+import Input from './components/Input';
 
 const Card = styled.div`
   background-color: #efefef;
@@ -22,13 +25,27 @@ const Main = styled.main`
   justify-content: center;
 `;
 
+const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const Col = styled.div``;
+
 export function App() {
   const [budget, setBudget] = useState(0);
+  const [expenses, setExpenses] = useState([]);
+
   return (
     <Main>
       <GlobalStyle />
       <Card>
-        <Budget setBudget={setBudget}/>
+        <Budget setBudget={setBudget} />
+        <Row>
+          <AddExpenses />
+          <Col>
+            <h4>Control Budget</h4>
+          </Col>
+        </Row>
       </Card>
     </Main>
   );
