@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import AddExpenses from './components/AddExpenses';
 import Budget from './components/Budget';
 import Button from './components/Button';
+import ControlExpenses from './components/ControlExpenses';
 import Input from './components/Input';
 
 const Card = styled.div`
@@ -46,9 +47,7 @@ export function App() {
         {budget ? (
           <Row>
             <AddExpenses addExpenses={addExpenses} />
-            <Col>
-              <h4>Control Budget</h4>
-            </Col>
+            <ControlExpenses expenses={expenses} budget={budget} />
           </Row>
         ) : (
           <Budget setBudget={setBudget} />
