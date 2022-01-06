@@ -10,7 +10,7 @@ const Col = styled.div`
   gap: 15px;
 `;
 
-function AddExpenses() {
+function AddExpenses({ addExpenses }: { addExpenses: any }) {
   const [expenseName, setExpenseName] = useState('');
   const [expenseValue, setExpenseValue] = useState<number | any>(0);
   const [error, setError] = useState<boolean>(false);
@@ -22,7 +22,7 @@ function AddExpenses() {
         name: expenseName,
         value: transformExpense,
       };
-      // Todo: add of AddExpenses
+      addExpenses(expense);
       // Todo: reset form
       setError(false);
       return;

@@ -33,7 +33,11 @@ const Col = styled.div``;
 
 export function App() {
   const [budget, setBudget] = useState(0);
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState<any[]>([]);
+
+  const addExpenses = (expense: { name: string; value: number }) => {
+    setExpenses([...expenses, expense]);
+  };
 
   return (
     <Main>
@@ -41,7 +45,7 @@ export function App() {
       <Card>
         <Budget setBudget={setBudget} />
         <Row>
-          <AddExpenses />
+          <AddExpenses addExpenses={addExpenses} />
           <Col>
             <h4>Control Budget</h4>
           </Col>
