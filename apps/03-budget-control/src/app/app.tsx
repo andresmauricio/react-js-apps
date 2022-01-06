@@ -43,13 +43,16 @@ export function App() {
     <Main>
       <GlobalStyle />
       <Card>
-        <Budget setBudget={setBudget} />
-        <Row>
-          <AddExpenses addExpenses={addExpenses} />
-          <Col>
-            <h4>Control Budget</h4>
-          </Col>
-        </Row>
+        {budget ? (
+          <Row>
+            <AddExpenses addExpenses={addExpenses} />
+            <Col>
+              <h4>Control Budget</h4>
+            </Col>
+          </Row>
+        ) : (
+          <Budget setBudget={setBudget} />
+        )}
       </Card>
     </Main>
   );
