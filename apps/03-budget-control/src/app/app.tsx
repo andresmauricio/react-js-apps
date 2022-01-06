@@ -1,11 +1,12 @@
 import GlobalStyle from 'apps/03-budget-control/src/app/components/GlobalStyles';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import styled from 'styled-components';
 import AddExpenses from './components/AddExpenses';
 import Budget from './components/Budget';
 import Button from './components/Button';
 import ControlExpenses from './components/ControlExpenses';
 import Input from './components/Input';
+import TotalExpense from './components/TotalExpense';
 
 const Card = styled.div`
   background-color: #efefef;
@@ -30,11 +31,6 @@ const Row = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const TotalExpense = styled.span`
-  color: ${(props: any) =>
-    props.expense > props.budget / 2 ? '#FF0000' : '#008000'};
-  font-weight: bold;
-` as any;
 
 export function App() {
   const [budget, setBudget] = useState(0);
@@ -51,16 +47,15 @@ export function App() {
       <GlobalStyle />
       <Card>
         {budget ? (
-          <Row>
-            <AddExpenses addExpenses={addExpenses} />
-            <ControlExpenses expenses={expenses} budget={budget} />
-            <p>
-              Total expenses{' '}
-              <TotalExpense expense={totalExpenses} budget={budget}>
-                ${totalExpenses}
-              </TotalExpense>
-            </p>
-          </Row>
+          <Fragment>
+            <Row>
+              <AddExpenses addExpenses={addExpenses} />
+              <ControlExpenses expenses={expenses} budget={budget} />
+            </Row>
+            <Row>
+              <TotalExpense totalExpenses={totalExpenses} budget={budget} />
+            </Row>
+          </Fragment>
         ) : (
           <Budget setBudget={setBudget} />
         )}
