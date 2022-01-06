@@ -1,4 +1,5 @@
 import GlobalStyle from 'apps/03-budget-control/src/app/components/GlobalStyles';
+import { useState } from 'react';
 import styled from 'styled-components';
 import Budget from './components/Budget';
 
@@ -22,11 +23,12 @@ const Main = styled.main`
 `;
 
 export function App() {
+  const [budget, setBudget] = useState(0);
   return (
     <Main>
       <GlobalStyle />
       <Card>
-        <Budget />
+        <Budget setBudget={setBudget}/>
       </Card>
     </Main>
   );
