@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './app.module.css';
 import Error from './components/Error';
 import GroupRadio from './components/GroupRadio';
+import Loading from './components/Loading';
 import Select from './components/Select';
 import Total from './components/Total';
 import {
@@ -15,6 +16,7 @@ export function App() {
   const [error, setError] = useState(false);
   const [quote, setQuote] = useState({ country: '', year: '', category: '' });
   const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const updateQuote = (input: any) => {
     setQuote({ ...quote, [input.target.name]: input.target.value });
@@ -29,8 +31,12 @@ export function App() {
       setError(true);
       return;
     }
-    setTotal(calculateQuoteInsurance2(quote));
     setError(false);
+    setLoading(true);
+    setTimeout(() => {
+      setTotal(calculateQuoteInsurance2(quote));
+      setLoading(false);
+    }, 1000);
   };
   return (
     <>
@@ -55,6 +61,7 @@ export function App() {
               />
               <button className="btn btn-primary w-100">Quote</button>
             </form>
+            {loading ? <Loading /> : null}
             {total ? <Total total={total} /> : null}
           </div>
         </div>
