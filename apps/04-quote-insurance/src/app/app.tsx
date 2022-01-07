@@ -3,6 +3,7 @@ import styles from './app.module.css';
 import Error from './components/Error';
 import GroupRadio from './components/GroupRadio';
 import Select from './components/Select';
+import Total from './components/Total';
 import {
   calculateQuoteInsurance,
   calculateQuoteInsurance2,
@@ -54,7 +55,7 @@ export function App() {
               />
               <button className="btn btn-primary w-100">Quote</button>
             </form>
-            {total ? <p>Total: ${total}</p> : null}
+            {total ? <Total total={total} /> : null}
           </div>
         </div>
       </div>
