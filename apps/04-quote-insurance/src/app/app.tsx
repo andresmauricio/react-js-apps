@@ -1,15 +1,30 @@
 import { useState } from 'react';
 import styles from './app.module.css';
+import Error from './components/Error';
 import GroupRadio from './components/GroupRadio';
 import Select from './components/Select';
 export function App() {
   const [countries, setCountries] = useState(['America', 'Europa', 'Asia']);
   const [years, setYears] = useState([2018, 2019, 2020, 2021, 2022]);
   const [plains, setProducts] = useState(['Basic', 'Completed']);
-  const [quote, setQuote] = useState({ country: '', year: 0, category: '' });
+  const [error, setError] = useState(false);
+  const [quote, setQuote] = useState({ country: '', year: '', category: '' });
 
   const updateQuote = (input: any) => {
     setQuote({ ...quote, [input.target.name]: input.target.value });
+  };
+
+  const executeQuote = (e: any) => {
+    e.preventDefault();
+    const invalidFields = Object.values(quote).some(
+      (field) => field.length === 0
+    );
+    if (invalidFields) {
+      setError(true);
+      return;
+    }
+
+    setError(false);
   };
   return (
     <>
@@ -19,7 +34,8 @@ export function App() {
             <h4 className="card-title bg-primary text-white p-3 text-center">
               Quote insurance
             </h4>
-            <form>
+            {error ? <Error /> : null}
+            <form onSubmit={executeQuote}>
               <Select
                 label="Country"
                 options={countries}
