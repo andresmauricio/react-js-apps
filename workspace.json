@@ -5,6 +5,7 @@
     "01-shopping-cart-e2e": "apps/01-shopping-cart-e2e",
     "02-admin-patients-app": "apps/02-admin-patients-app",
     "02-admin-patients-app-e2e": "apps/02-admin-patients-app-e2e",
-    "03-budget-control": "apps/03-budget-control"
+    "03-budget-control": "apps/03-budget-control",
+    "04-quote-insurance": "apps/04-quote-insurance"
   }
 }

@@ -1,0 +1,73 @@
+{
+  "root": "apps/04-quote-insurance",
+  "sourceRoot": "apps/04-quote-insurance/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/04-quote-insurance",
+        "index": "apps/04-quote-insurance/src/index.html",
+        "baseHref": "/",
+        "main": "apps/04-quote-insurance/src/main.tsx",
+        "polyfills": "apps/04-quote-insurance/src/polyfills.ts",
+        "tsConfig": "apps/04-quote-insurance/tsconfig.app.json",
+        "assets": [
+          "apps/04-quote-insurance/src/favicon.ico",
+          "apps/04-quote-insurance/src/assets"
+        ],
+        "styles": ["apps/04-quote-insurance/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/04-quote-insurance/src/environments/environment.ts",
+              "with": "apps/04-quote-insurance/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "04-quote-insurance:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "04-quote-insurance:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/04-quote-insurance/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/04-quote-insurance"],
+      "options": {
+        "jestConfig": "apps/04-quote-insurance/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
