@@ -31,6 +31,7 @@ export function App() {
       setError(true);
       return;
     }
+    setTotal(0);
     setError(false);
     setLoading(true);
     setTimeout(() => {
@@ -40,8 +41,8 @@ export function App() {
   };
   return (
     <>
-      <div className="container">
-        <div className="card">
+      <div className="container d-flex justify-content-center align-items-center">
+        <div className="card mt-5 p-3 w-75">
           <div className="card-body">
             <h4 className="card-title bg-success text-white p-3 text-center">
               Quote insurance
@@ -59,7 +60,7 @@ export function App() {
                 name="category"
                 updateQuote={updateQuote}
               />
-              <button className="btn btn-primary w-100">Quote</button>
+              <button disabled={loading} className="btn btn-primary w-100">Quote</button>
             </form>
             {loading ? <Loading /> : null}
             {total ? <Total total={total} /> : null}
