@@ -22,8 +22,9 @@ function Select({
           className="form-select"
           name={label.toLowerCase()}
           onChange={(e: any) => updateQuote(e)}
+          defaultValue={''}
         >
-          <option disabled >Select one option</option>
+          <option value="" disabled>Select one option</option>
           {options.map((option: any) => (
             <option key={option} value={option}>{option}</option>
           ))}
