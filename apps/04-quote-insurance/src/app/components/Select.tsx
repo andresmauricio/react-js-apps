@@ -23,6 +23,7 @@ function Select({
           name={label.toLowerCase()}
           onChange={(e: any) => updateQuote(e)}
         >
+          <option disabled >Select one option</option>
           {options.map((option: any) => (
             <option key={option} value={option}>{option}</option>
           ))}
