@@ -31,7 +31,7 @@ export function App() {
       <div className="container">
         <div className="card">
           <div className="card-body">
-            <h4 className="card-title bg-primary text-white p-3 text-center">
+            <h4 className="card-title bg-success text-white p-3 text-center">
               Quote insurance
             </h4>
             {error ? <Error /> : null}
@@ -47,7 +47,7 @@ export function App() {
                 name="category"
                 updateQuote={updateQuote}
               />
-              <button className="btn btn-primary btn-block">Quote</button>
+              <button className="btn btn-primary w-100">Quote</button>
             </form>
           </div>
         </div>

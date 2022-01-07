@@ -10,13 +10,13 @@ function Select({
   updateQuote: any;
 }) {
   return (
-    <div className="row g-3 align-items-center">
-      <div className="col-auto">
+    <div className="row g-3 align-items-center mb-3 mt-3">
+      <div className="col-6">
         <label htmlFor="inputPassword6" className="col-form-label">
           {label}
         </label>
       </div>
-      <div className="col-auto">
+      <div className="col-6">
         <select
           id="disabledSelect"
           className="form-select"

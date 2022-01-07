@@ -10,9 +10,10 @@ function GroupRadio({
   updateQuote: any;
 }) {
   return (
-    <>
+    <div className="row mt-3 mb-3">
+      <h6 className="col-6" >Plan</h6>
       {labels.map((label: string, index: number) => (
-        <div className="form-check" key={index}>
+        <div className="form-check col-3" key={index}>
           <input
             className="form-check-input"
             type="radio"
@@ -29,7 +30,7 @@ function GroupRadio({
           </label>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 
