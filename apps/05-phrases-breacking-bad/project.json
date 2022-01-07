@@ -1,0 +1,73 @@
+{
+  "root": "apps/05-phrases-breacking-bad",
+  "sourceRoot": "apps/05-phrases-breacking-bad/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/05-phrases-breacking-bad",
+        "index": "apps/05-phrases-breacking-bad/src/index.html",
+        "baseHref": "/",
+        "main": "apps/05-phrases-breacking-bad/src/main.tsx",
+        "polyfills": "apps/05-phrases-breacking-bad/src/polyfills.ts",
+        "tsConfig": "apps/05-phrases-breacking-bad/tsconfig.app.json",
+        "assets": [
+          "apps/05-phrases-breacking-bad/src/favicon.ico",
+          "apps/05-phrases-breacking-bad/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/05-phrases-breacking-bad/src/environments/environment.ts",
+              "with": "apps/05-phrases-breacking-bad/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "05-phrases-breacking-bad:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "05-phrases-breacking-bad:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/05-phrases-breacking-bad/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/05-phrases-breacking-bad"],
+      "options": {
+        "jestConfig": "apps/05-phrases-breacking-bad/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
