@@ -3,12 +3,17 @@ import styles from './app.module.css';
 import Error from './components/Error';
 import GroupRadio from './components/GroupRadio';
 import Select from './components/Select';
+import {
+  calculateQuoteInsurance,
+  calculateQuoteInsurance2,
+} from './utils/util';
 export function App() {
   const [countries, setCountries] = useState(['America', 'Europa', 'Asia']);
   const [years, setYears] = useState([2018, 2019, 2020, 2021, 2022]);
   const [plains, setProducts] = useState(['Basic', 'Completed']);
   const [error, setError] = useState(false);
   const [quote, setQuote] = useState({ country: '', year: '', category: '' });
+  const [total, setTotal] = useState(0);
 
   const updateQuote = (input: any) => {
     setQuote({ ...quote, [input.target.name]: input.target.value });
@@ -23,7 +28,7 @@ export function App() {
       setError(true);
       return;
     }
-
+    setTotal(calculateQuoteInsurance2(quote));
     setError(false);
   };
   return (
@@ -49,6 +54,7 @@ export function App() {
               />
               <button className="btn btn-primary w-100">Quote</button>
             </form>
+            {total ? <p>Total: ${total}</p> : null}
           </div>
         </div>
       </div>
