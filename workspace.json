@@ -7,6 +7,7 @@
     "02-admin-patients-app-e2e": "apps/02-admin-patients-app-e2e",
     "03-budget-control": "apps/03-budget-control",
     "04-quote-insurance": "apps/04-quote-insurance",
-    "05-phrases-breacking-bad": "apps/05-phrases-breacking-bad"
+    "05-phrases-breacking-bad": "apps/05-phrases-breacking-bad",
+    "06-climate-app": "apps/06-climate-app"
   }
 }
