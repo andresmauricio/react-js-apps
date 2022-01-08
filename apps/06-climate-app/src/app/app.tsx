@@ -1,12 +1,6 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-const StyledApp = styled.div`
-  // Your style here
-`;
-
-const Input = styled.input`
-  // Your style here
-`;
+import GlobalStyle from './components/GlobalStyle';
+import { Button, Card, Input, StyledApp, Title } from './components/UI/ui';
 
 export function App() {
   const [city, setCity] = useState('');
@@ -21,11 +15,15 @@ export function App() {
   };
   return (
     <StyledApp>
-      <Input
-        placeholder="Write your city"
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <button onClick={() => getCurrentWeather()}>Search</button>
+      <GlobalStyle />
+      <Title>Consult your current clime</Title>
+      <Card>
+        <Input
+          placeholder="Write your city"
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <Button onClick={() => getCurrentWeather()}>Search</Button>
+      </Card>
     </StyledApp>
   );
 }
