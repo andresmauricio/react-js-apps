@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import Clime from './components/Clime';
 import GlobalStyle from './components/GlobalStyle';
 import { Button, Card, Input, StyledApp, Title } from './components/UI/ui';
 
 export function App() {
   const [city, setCity] = useState('');
-  const [currentWeather, setCurrentWeather] = useState({});
+  const [currentWeather, setCurrentWeather] = useState<any>(null);
 
   const getCurrentWeather = async () => {
     const API_KEY = 'a1c919548b510275b471fbcdcdd7192a';
@@ -23,6 +24,7 @@ export function App() {
           onChange={(e) => setCity(e.target.value)}
         />
         <Button onClick={() => getCurrentWeather()}>Search</Button>
+        {currentWeather ? <Clime currentWeather={currentWeather} /> : null}
       </Card>
     </StyledApp>
   );
