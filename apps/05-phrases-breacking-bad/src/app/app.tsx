@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import GlobalStyle from './components/GlobalStyles';
 
@@ -11,6 +11,7 @@ const Main = styled.main`
   align-items: center;
   justify-content: center;
   background-color: #365a00;
+  padding: 10px 50px;
 `;
 
 const Title = styled.h2`
@@ -25,13 +26,47 @@ const Phrase = styled.p`
   color: white;
 `;
 
+const Author = styled.p`
+  font-weight: 200;
+  font-size: 20px;
+  color: white;
+  font-style: italic;
+`;
+
+const Button = styled.button`
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 25px;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+`;
+
 export function App() {
-  const [phrase, setPhrase] = useState('');
+  const [phrase, setPhrase] = useState<any>({});
+
+  const getPhrases = async () => {
+    const data = (await fetch(
+      'https://breaking-bad-quotes.herokuapp.com/v1/quotes'
+    )) as any;
+    const response = await data.json();
+    setPhrase(response[0]);
+    console.log(response);
+  };
+
+  useEffect(() => {
+    getPhrases();
+  }, []);
+
   return (
     <Main>
       <GlobalStyle />
       <Title>Breacking Bad</Title>
-      <Phrase>Example Phrase</Phrase>
+      <Phrase>{phrase.quote}</Phrase>
+      <Author>{phrase.author}</Author>
+      <Button>Generate phrase</Button>
     </Main>
   );
 }
