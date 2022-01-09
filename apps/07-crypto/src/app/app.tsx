@@ -38,6 +38,7 @@ export function App() {
         onChange={setCryto}
       />
       <button onClick={() => searchCrypto()}>Search</button>
+      <p>The value of crypto currency is: ${response} {currency}</p>
     </StyledApp>
   );
 }
