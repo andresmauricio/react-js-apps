@@ -6,6 +6,18 @@ import Select from './components/Select';
 const StyledApp = styled.div`
   // Your style here
 `;
+
+const Button = styled.button`
+  padding: 10px 40px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #35b5ad;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+`;
 const COUNTRY_CODES = ['COP', 'USD', 'CAD', 'EUR'];
 const CRYPTO_CURRENCY = ['BTC', 'ETH'];
 
@@ -37,8 +49,8 @@ export function App() {
         label="Select your crypto"
         onChange={setCryto}
       />
-      <button onClick={() => searchCrypto()}>Search</button>
-      <p>The value of crypto currency is: ${response} {currency}</p>
+      <Button onClick={() => searchCrypto()}>Search</Button>
+      {/* <p>The value of crypto currency is: ${response} {currency}</p> */}
     </StyledApp>
   );
 }

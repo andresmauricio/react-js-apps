@@ -1,14 +1,36 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+`;
+
+const Label = styled.label`
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+`;
+
+const SelectOption = styled.select`
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  height: 35px;
+  padding-left: 10px;
+`;
 
 function Select({ options, label, onChange }: any) {
   return (
-    <div>
-      <label htmlFor="yourMondey">{label}</label>
-      <select
+    <Row>
+      <Label htmlFor="yourMondey">{label}</Label>
+      <SelectOption
         defaultValue={''}
-        name=""
         id="yourMondey"
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e: any) => onChange(e.target.value)}
       >
         <option value="" disabled>
           Select yor option
@@ -18,8 +40,8 @@ function Select({ options, label, onChange }: any) {
             {option}
           </option>
         ))}
-      </select>
-    </div>
+      </SelectOption>
+    </Row>
   );
 }
 
