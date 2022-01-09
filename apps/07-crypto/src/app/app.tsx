@@ -4,7 +4,25 @@ import GlobalStyle from './components/GlobalStyles';
 import Select from './components/Select';
 
 const StyledApp = styled.div`
-  // Your style here
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Card = styled.div`
+  background-color: #333;
+  padding: 25px 45px;
+  border-radius: 5px;
 `;
 
 const Button = styled.button`
@@ -24,7 +42,7 @@ const CRYPTO_CURRENCY = ['BTC', 'ETH'];
 export function App() {
   const [currency, setCurrency] = useState('');
   const [crypto, setCryto] = useState('');
-  const [response, setResponse] = useState({});
+  const [response, setResponse] = useState(null);
 
   const searchCrypto = async () => {
     if (currency && crypto) {
@@ -39,18 +57,26 @@ export function App() {
   return (
     <StyledApp>
       <GlobalStyle />
-      <Select
-        options={COUNTRY_CODES}
-        label="Select your currency"
-        onChange={setCurrency}
-      />
-      <Select
-        options={CRYPTO_CURRENCY}
-        label="Select your crypto"
-        onChange={setCryto}
-      />
-      <Button onClick={() => searchCrypto()}>Search</Button>
-      {/* <p>The value of crypto currency is: ${response} {currency}</p> */}
+      <Row>
+        <Card>
+          <Select
+            options={COUNTRY_CODES}
+            label="Select your currency"
+            onChange={setCurrency}
+          />
+          <Select
+            options={CRYPTO_CURRENCY}
+            label="Select your crypto"
+            onChange={setCryto}
+          />
+          <Button onClick={() => searchCrypto()}>Search</Button>
+        </Card>
+        {response ? (
+          <p>
+            The value of crypto currency is: ${response} {currency}
+          </p>
+        ) : null}
+      </Row>
     </StyledApp>
   );
 }
